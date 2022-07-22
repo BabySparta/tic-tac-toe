@@ -47,6 +47,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .gameboard {
@@ -73,6 +74,25 @@ body {
     color: var(--niceRed)   ;
 }
 
+.reset {
+    border: none;
+    outline: var(--niceRed) 8px solid;
+    background-color: whitesmoke;
+    color: var(--niceRed);
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 200px;
+    font-family: var(--fontMono);
+    border-radius: 8px;
+    margin-top: 64px;
+    transition: 0.2s ease-in-out;
+}
+
+.reset:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
 
 /* Footer */
 .footer {
