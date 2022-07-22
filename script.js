@@ -28,15 +28,25 @@ const displayGame = (() => {
         array[position] = cell.textContent;
     }
     const checkWin = () => {
-        if (array.at(0) === array.at(3) && array.at(0) === array.at(6)) {alert(`${turn} won the game!`)}
-        if (array.at(1) === array.at(4) && array.at(1) === array.at(7)) {alert(`${turn} won the game!`)}
-        if (array.at(2) === array.at(5) && array.at(2) === array.at(8)) {alert(`${turn} won the game!`)}
-        if (array.at(0) === array.at(1) && array.at(0) === array.at(2)) {alert(`${turn} won the game!`)}
-        if (array.at(3) === array.at(4) && array.at(3) === array.at(5)) {alert(`${turn} won the game!`)}
-        if (array.at(6) === array.at(7) && array.at(6) === array.at(8)) {alert(`${turn} won the game!`)}
-        if (array.at(0) === array.at(4) && array.at(0) === array.at(8)) {alert(`${turn} won the game!`)}
-        if (array.at(2) === array.at(4) && array.at(2) === array.at(6)) {alert(`${turn} won the game!`)}
+        if (array.at(0) === array.at(3) && array.at(0) === array.at(6)) {alert(`${turn} won the game!`); return}
+        if (array.at(1) === array.at(4) && array.at(1) === array.at(7)) {alert(`${turn} won the game!`); return}
+        if (array.at(2) === array.at(5) && array.at(2) === array.at(8)) {alert(`${turn} won the game!`); return}
+        if (array.at(0) === array.at(1) && array.at(0) === array.at(2)) {alert(`${turn} won the game!`); return}
+        if (array.at(3) === array.at(4) && array.at(3) === array.at(5)) {alert(`${turn} won the game!`); return}
+        if (array.at(6) === array.at(7) && array.at(6) === array.at(8)) {alert(`${turn} won the game!`); return}
+        if (array.at(0) === array.at(4) && array.at(0) === array.at(8)) {alert(`${turn} won the game!`); return}
+        if (array.at(2) === array.at(4) && array.at(2) === array.at(6)) {alert(`${turn} won the game!`); return}
+        draw();
+    }
 
+    const draw = () => {
+        const newArray = []
+        array.forEach(item => {
+            const reduced = item.split(' ').join('')
+            newArray.push(reduced);
+        });
+        if (newArray.includes('')) {return}
+        else {alert("It's a draw!")}
     }
     return {display}
 })();
