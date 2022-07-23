@@ -46,11 +46,6 @@ body {
     font-weight: 700;
 }
 
-.name {
-    position: absolute;
-    top: 25px;
-    left: 10%;
-}
 
 /* Name Modal */
 .modal1 {
@@ -191,7 +186,7 @@ body {
     color: var(--niceRed)   ;
 }
 
-.reset, .name {
+.reset, .name, .changeMode {
     border: none;
     outline: var(--niceRed) 8px solid;
     background-color: whitesmoke;
@@ -208,7 +203,7 @@ body {
     margin-top: 64px;
 }
 
-.reset:hover, .name:hover, #submit:hover {
+.reset:hover, .name:hover, #submit:hover, .changeMode:hover {
     transform: scale(1.03);
     cursor: pointer;
     transition: 0.2s ease-in-out;

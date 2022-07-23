@@ -18,9 +18,11 @@ body {
 
 /* Header */
 .header {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 128px;
     height: 10%;
     width: 100%;
     background-color: var(--niceRed);
@@ -44,6 +46,22 @@ body {
     font-family: var(--fontMono);
     font-size: 3rem;
     font-weight: 700;
+}
+
+.nameChange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+}
+
+.changeMode {
+    position: absolute;
+    top: 25px;
+    right: 175px;
 }
 
 /* Name Modals */
@@ -185,7 +203,7 @@ body {
     color: var(--niceRed)   ;
 }
 
-.reset, .name {
+.reset, .name, .changeMode {
     border: none;
     outline: var(--niceRed) 8px solid;
     background-color: whitesmoke;
@@ -202,7 +220,7 @@ body {
     margin-top: 64px;
 }
 
-.reset:hover, .name:hover, #submit:hover {
+.reset:hover, .name:hover, #submit:hover, .changeMode:hover {
     transform: scale(1.03);
     cursor: pointer;
     transition: 0.2s ease-in-out;

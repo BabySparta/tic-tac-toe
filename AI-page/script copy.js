@@ -15,31 +15,28 @@ const displayGame = (() => {
     }
     const play = (cell, item) => {
         if (cell.textContent.split(' ').join('') !== '') {return;}  
-        if (turn === 'Player 1') {
-        cell.textContent = 'X'
-        } else { cell.textContent = 'O'}
+        cell.textContent = 'X';
         updateArray(cell, item);
-        checkWin();
-        changeTurn();
+        checkWin('player');
+        if (checkWin() === true) {return;}
+        AIplay();
     }
-    const changeTurn = () => {
-        if (turn === 'Player 1') { turn = 'Player 2'; return;} 
-        if (turn === 'Player 2') { turn = 'Player 1'; return;}  
-    }
+
     const updateArray = (cell, item) => {
         let position = array.indexOf(item);
         array[position] = cell.textContent;
     }
-    const checkWin = () => {
-        if (array.at(0) === array.at(3) && array.at(0) === array.at(6) && array.at(0) !== '') {gameEnd()}
-        if (array.at(1) === array.at(4) && array.at(1) === array.at(7) && array.at(1) !== '') {gameEnd()}
-        if (array.at(2) === array.at(5) && array.at(2) === array.at(8) && array.at(2) !== '') {gameEnd()}
-        if (array.at(0) === array.at(1) && array.at(0) === array.at(2) && array.at(0) !== '') {gameEnd()}
-        if (array.at(3) === array.at(4) && array.at(3) === array.at(5) && array.at(3) !== '') {gameEnd()}
-        if (array.at(6) === array.at(7) && array.at(6) === array.at(8) && array.at(6) !== '') {gameEnd()}
-        if (array.at(0) === array.at(4) && array.at(0) === array.at(8) && array.at(0) !== '') {gameEnd()}
-        if (array.at(2) === array.at(4) && array.at(2) === array.at(6) && array.at(2) !== '') {gameEnd()}
+    const checkWin = (player) => {
+        if (array.at(0) === array.at(3) && array.at(0) === array.at(6) && array.at(0) !== '') {gameEnd(player); return true;}
+        if (array.at(1) === array.at(4) && array.at(1) === array.at(7) && array.at(1) !== '') {gameEnd(player); return true;}
+        if (array.at(2) === array.at(5) && array.at(2) === array.at(8) && array.at(2) !== '') {gameEnd(player); return true;}
+        if (array.at(0) === array.at(1) && array.at(0) === array.at(2) && array.at(0) !== '') {gameEnd(player); return true;}
+        if (array.at(3) === array.at(4) && array.at(3) === array.at(5) && array.at(3) !== '') {gameEnd(player); return true;}
+        if (array.at(6) === array.at(7) && array.at(6) === array.at(8) && array.at(6) !== '') {gameEnd(player); return true;}
+        if (array.at(0) === array.at(4) && array.at(0) === array.at(8) && array.at(0) !== '') {gameEnd(player); return true;}
+        if (array.at(2) === array.at(4) && array.at(2) === array.at(6) && array.at(2) !== '') {gameEnd(player); return true;}
         draw();
+        if (draw() === true) {return true}
     }
 
     const draw = () => {
@@ -53,10 +50,11 @@ const displayGame = (() => {
         if (newArray.includes('')) {return}
         modal.style.display = 'flex';
         endText.textContent = "It's a draw!";
+        return true;
     }
 
     const reset = document.querySelector('.reset');
-        reset.addEventListener("click", clear = () => {
+    reset.addEventListener("click", clear = () => {
         const cells = document.querySelectorAll('.cell');
         array = ['', ' ', '  ', '   ', '    ', '     ', '      ', '       ', '        '];
         cells.forEach(item => {item.textContent = ''})
@@ -65,15 +63,30 @@ const displayGame = (() => {
         modal.style.display = 'none';
     })
 
-    const gameEnd = () => {
+    const gameEnd = (player) => {
         const endText = document.querySelector('.endText');
         const modal = document.querySelector('.endModal');
         modal.style.display = 'flex';
-        if (turn === 'Player 1') {
-        endText.textContent = `${playerOne} won the game!`;
-        return;
+        if (player === 'player') {
+            endText.textContent = `${playerOne} won the game!`;
+            return true;
         }
-        endText.textContent = `${playerTwo} won the game!`;
+        if (player === 'AI') {
+            endText.textContent = `The AI won the game!`;
+            return true;
+        }
+    }
+
+    const AIplay = () => {
+        checkWin('player');
+        const board = document.querySelectorAll('.cell')    ;
+        let number = Math.floor(Math.random() * 9);
+        if (array[number].split(' ').join('') === '') {
+            array[number] = 'O';
+            board.item(number).textContent = 'O';
+            checkWin('AI');
+            return;
+        } AIplay();
     }
 
     return {display}
@@ -98,7 +111,7 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 window.onclick = function(event) {
-    if (event.target == modal || event.target == modal2) {
+    if (event.target == modal) {
     modal.style.display = "none";
 }
 }
@@ -110,4 +123,7 @@ form.onsubmit = function() {
 };
 const changeName1 = (name) => {
     playerOne = name;
-}   
+}
+
+const changeMode = document.querySelector('.changeMode');
+changeMode.addEventListener('click', )
