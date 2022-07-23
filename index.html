@@ -10,8 +10,42 @@
 </head>
 <body>
     <div class="header">
-        <img class="gameImg" src="tic-tac-toe-board.png" alt="tic-tac-toe board">
-        <div class="headerTxt">Tic-Tac-Toe</div>
+        <button class="name one">Player 1 Name</button>
+        <div class="title">
+            <img class="gameImg" src="tic-tac-toe-board.png" alt="tic-tac-toe board">
+            <div class="headerTxt">Tic-Tac-Toe</div>
+        </div>
+        <button class="name two">Player 2 Name</button>
+    </div>
+    <div class="modal1">
+        <div class="modalContent">
+            <div class="modalHeader">
+                <div class="modalTitle">Change Name</div>
+                <span class="close">&times;</span>
+            </div>
+            <form class="modalForm">
+                <div class="wrapper">
+                    <label class="label" for="Name">New Name</label>
+                    <input type="text" class="modalInput" id="Name" maxlength="20" minlength="1" required>
+                </div>
+                <input type="submit" name= "submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <div class="modal2">
+        <div class="modalContent">
+            <div class="modalHeader">
+                <div class="modalTitle">Change Name</div>
+                <span class="close">&times;</span>
+            </div>
+            <form class="modalForm2">
+                <div class="wrapper">
+                    <label class="label" for="Name">New Name</label>
+                    <input type="text" class="modalInput2" id="Name" maxlength="20" minlength="1" required>
+                </div>
+                <input type="submit" name= "submit" id="submit">
+            </form>
+        </div>
     </div>
     <div class="content">
         <div class="gameboard"></div>

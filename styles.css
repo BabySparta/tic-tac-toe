@@ -20,11 +20,18 @@ body {
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
+    justify-content: space-around;
     height: 10%;
+    width: 100%;
     background-color: var(--niceRed);
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .gameImg {
@@ -39,6 +46,109 @@ body {
     font-weight: 700;
 }
 
+/* Name Modals */
+.modal1, .modal2 {
+    display: none;
+    position: fixed; 
+    z-index: 1;  
+    padding-top: 200px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+  }
+  
+  .modalContent {
+      background-color: whitesmoke;
+      border-radius: 3%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-direction: column;
+      width: 350px;
+      height: 40%;
+  }
+  
+  .modalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      padding: 16px;
+      height: 10%;
+  }
+  
+  .modalTitle, .close {
+      text-decoration: underline var(--niceRed) solid 4px;
+      text-underline-offset: 2px;
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: 'Monaco', 'Courier New', Courier, monospace;
+      border-radius: 4px;
+      padding: 8px;
+      color: var(--niceRed);
+  }
+  
+  .close:hover {
+      background-color: rgb(230, 230, 230);
+      cursor: pointer;
+  }
+  
+  .modalForm, .modalForm2 {
+      height: 85%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .label {
+    font-size: 1.5rem;
+    font-family: var(--fontMono);
+    color: var(--niceRed);
+    font-weight: 700;
+  }
+
+  #Name {
+    outline: none;
+    border: none;
+    background-color: white;
+    font-size: 1.5rem;
+    font-family: var(--fontMono);
+    border-radius: 16px;
+    height: 24px;
+    width: 225px;
+    color: var(--niceRed);
+    padding: 8px;
+    transition: 0.3s ease-in-out;
+  }
+
+#Name:focus {
+    box-shadow: 0px 3px 0px var(--niceRed);
+    transition: 0.3s ease-in-out;
+}
+
+#submit {
+    border: none;
+    outline: var(--niceRed) 4px solid;
+    background-color: whitesmoke;
+    color: var(--niceRed);
+    font-size: 1rem;
+    height: 2rem;
+    width: 150px;
+    font-family: var(--fontMono);
+    border-radius: 8px;
+    transition: 0.2s ease-in-out;
+}
 
 /* Main content */
 .content {
@@ -74,7 +184,7 @@ body {
     color: var(--niceRed)   ;
 }
 
-.reset {
+.reset, .name {
     border: none;
     outline: var(--niceRed) 8px solid;
     background-color: whitesmoke;
@@ -84,11 +194,14 @@ body {
     width: 200px;
     font-family: var(--fontMono);
     border-radius: 8px;
-    margin-top: 64px;
     transition: 0.2s ease-in-out;
 }
 
-.reset:hover {
+.reset {
+    margin-top: 64px;
+}
+
+.reset:hover, .name:hover, #submit:hover {
     transform: scale(1.03);
     cursor: pointer;
     transition: 0.2s ease-in-out;

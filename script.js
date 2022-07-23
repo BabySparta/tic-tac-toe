@@ -1,3 +1,5 @@
+let playerOne = 'Player 1';
+let playerTwo = 'Player 2';
 
 const displayGame = (() => {
     let array = ['', ' ', '  ', '   ', '    ', '     ', '      ', '       ', '        '];
@@ -30,14 +32,14 @@ const displayGame = (() => {
         array[position] = cell.textContent;
     }
     const checkWin = () => {
-        if (array.at(0) === array.at(3) && array.at(0) === array.at(6) && array.at(0) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(1) === array.at(4) && array.at(1) === array.at(7) && array.at(1) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(2) === array.at(5) && array.at(2) === array.at(8) && array.at(2) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(0) === array.at(1) && array.at(0) === array.at(2) && array.at(0) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(3) === array.at(4) && array.at(3) === array.at(5) && array.at(3) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(6) === array.at(7) && array.at(6) === array.at(8) && array.at(6) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(0) === array.at(4) && array.at(0) === array.at(8) && array.at(0) !== '') {alert(`${turn} won the game!`); return}
-        if (array.at(2) === array.at(4) && array.at(2) === array.at(6) && array.at(2) !== '') {alert(`${turn} won the game!`); return}
+        if (array.at(0) === array.at(3) && array.at(0) === array.at(6) && array.at(0) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(1) === array.at(4) && array.at(1) === array.at(7) && array.at(1) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(2) === array.at(5) && array.at(2) === array.at(8) && array.at(2) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(0) === array.at(1) && array.at(0) === array.at(2) && array.at(0) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(3) === array.at(4) && array.at(3) === array.at(5) && array.at(3) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(6) === array.at(7) && array.at(6) === array.at(8) && array.at(6) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(0) === array.at(4) && array.at(0) === array.at(8) && array.at(0) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
+        if (array.at(2) === array.at(4) && array.at(2) === array.at(6) && array.at(2) !== '') {if (turn === 'Player 1') {alert(`${playerOne} won the game!`); return} alert(`${playerTwo} won the game!`)}
         draw();
     }
 
@@ -53,13 +55,61 @@ const displayGame = (() => {
 
     const reset = document.querySelector('.reset');
         reset.addEventListener("click", clear = () => {
-        console.log(array);
         const cells = document.querySelectorAll('.cell');
         array = ['', ' ', '  ', '   ', '    ', '     ', '      ', '       ', '        '];
         cells.forEach(item => {item.textContent = ''})
+        turn = 'Player 1';
     })
 
     return {display}
 })();
 
 displayGame.display();
+
+/* Modal Functions */
+
+const button1 = document.querySelector('.one');
+const modal = document.querySelector(".modal1");
+const span = document.querySelector(".close");
+const form = document.querySelector('.modalForm');
+const button2 = document.querySelector('.two');
+const form2 = document.querySelector('.modalForm2');
+const modal2 = document.querySelector('.modal2');
+
+
+button1.onclick = function() {
+    form.reset();
+    modal.style.display = "block"
+}
+button2.onclick = function() {
+    form.reset();
+    modal2.style.display = "block"
+}
+span.onclick = function() {
+    modal.style.display = "none";
+    modal2.style.display = 'none';
+}
+window.onclick = function(event) {
+    if (event.target == modal || event.target == modal2) {
+    modal.style.display = "none";
+    modal2.style.display = 'none';
+}
+}
+form.onsubmit = function() {
+    event.preventDefault();
+    const nameOne = document.querySelector('.modalInput').value;
+    changeName1(nameOne);
+    modal.style.display = "none";
+};
+const changeName1 = (name) => {
+    playerOne = name;
+}   
+form2.onsubmit = function() {
+    event.preventDefault();
+    const nameTwo = document.querySelector('.modalInput2').value;
+    changeName2(nameTwo);
+    modal2.style.display = "none";
+};
+const changeName2 = (name) => {
+    playerTwo = name;
+}   
