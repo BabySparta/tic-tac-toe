@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="name one">Player 1 Name</button>
+        <div class="title">
+            <img class="gameImg" src="../tic-tac-toe-board.png" alt="tic-tac-toe board">
+            <div class="headerTxt">Tic-Tac-Toe</div>
+        </div>
+        <button class="name two">Player 2 Name</button>
+    </div>
+    <div class="modal1">
+        <div class="modalContent">
+            <div class="modalHeader">
+                <div class="modalTitle">Change Name</div>
+                <span class="close">&times;</span>
+            </div>
+            <form class="modalForm">
+                <div class="wrapper">
+                    <label class="label" for="Name">New Name</label>
+                    <input type="text" class="modalInput" id="Name" maxlength="20" minlength="1" required>
+                </div>
+                <input type="submit" name= "submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <div class="modal2">
+        <div class="modalContent">
+            <div class="modalHeader">
+                <div class="modalTitle">Change Name</div>
+                <span class="close">&times;</span>
+            </div>
+            <form class="modalForm2">
+                <div class="wrapper">
+                    <label class="label" for="Name">New Name</label>
+                    <input type="text" class="modalInput2" id="Name" maxlength="20" minlength="1" required>
+                </div>
+                <input type="submit" name= "submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <div class="gameboard">
+            <div class="endModal">
+                <div class="gameOver">Game Over!</div>
+                <div class="endText"></div>
+            </div>
+        </div>
+        <button class="reset">Reset Game</button>
+    </div>
+    <div class="footer">
+        <div class="footerTxt">Brandon Young 2022</div>
+    </div>
+</body>
+</html>
